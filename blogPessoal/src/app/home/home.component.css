@@ -1,0 +1,10 @@
+.parallax {
+    background-image: url('https://kidssearch.com/picsearch/images/volcano-pic-1280x720-29e5ae5.png');
+
+    min-height: 500px;
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
