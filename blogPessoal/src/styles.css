@@ -1,1 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+.texto {
+    font-family: Roboto, sans-serif !important;
+    color: #e2e2e5;
+    --background-color: #121212;
+}
+
+main, aside {
+    background-color: #121212;
+}
+
+a:hover {
+	text-decoration: none; 
+    color: #f00
+}
+

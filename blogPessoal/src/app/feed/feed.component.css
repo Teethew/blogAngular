@@ -1,0 +1,14 @@
+.main {
+    min-height: 70vh !important;
+}
+
+/*.form-group:focus {}*/
+
+/* roxinho que fica nos input*/
+input[type=text]:focus, input[type=search]:focus, textarea:focus, select:focus {
+    border: 2px solid #8c5ce8 !important;
+}
+
+a.active {
+    background-color: #121212 !important;
+}

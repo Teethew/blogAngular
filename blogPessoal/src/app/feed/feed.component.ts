@@ -3,14 +3,14 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.component.html',
-  styles: [
-  ]
+  styleUrls: ['./feed.component.css']
 })
 export class FeedComponent implements OnInit {
 
   constructor() { }
 
   ngOnInit(): void {
+    window.scroll(0, 0);
   }
 
 }

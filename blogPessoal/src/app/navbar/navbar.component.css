@@ -1,4 +1,12 @@
+.container-fluid {
+    min-height: 15vh;
+}
+
 .texto {
     letter-spacing: .2rem;
     font-size: 16pt;
+}
+
+.texto:hover{
+    color: #8c5ce8 !important;
 }
