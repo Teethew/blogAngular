@@ -1,0 +1,23 @@
+a {
+    text-decoration: none !important;
+}
+
+.main {
+    min-height: 70vh !important;
+}
+
+.form-control {
+    background-color: #121212 !important; 
+    border-color: #121212 !important;
+}
+
+/* roxinho que fica nos input*/
+input[type=text]:focus, input[type=search]:focus, textarea:focus, select:focus {
+    border: 2px solid #8c5ce8 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+}
+
+a.active {
+    background-color: #121212 !important;
+}

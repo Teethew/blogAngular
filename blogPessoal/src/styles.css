@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+.texto {
+    font-family: Roboto, sans-serif !important;
+    color: #e2e2e5;
+    --background-color: #121212;
+}
+
+.form-control {
+    background-color: #121212 !important; 
+    border-color: #121212 !important;
+}
+
+main, aside {
+    background-color: #121212;
+}
+
+a:hover {
+	text-decoration: none; 
+    color: #f00
+}
+
+input[type=text]:focus, input[type=search]:focus, textarea:focus, select:focus {
+    border: 2px solid #8c5ce8 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+}
