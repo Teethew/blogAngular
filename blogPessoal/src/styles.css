@@ -7,6 +7,11 @@
     --background-color: #121212;
 }
 
+.form-control {
+    background-color: #121212 !important; 
+    border-color: #121212 !important;
+}
+
 main, aside {
     background-color: #121212;
 }
@@ -16,3 +21,8 @@ a:hover {
     color: #f00
 }
 
+input[type=text]:focus, input[type=search]:focus, textarea:focus, select:focus {
+    border: 2px solid #8c5ce8 !important;
+    box-shadow: none !important;
+    outline: 0 !important;
+}
