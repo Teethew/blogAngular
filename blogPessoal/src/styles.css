@@ -7,13 +7,27 @@
     --background-color: #121212;
 }
 
+.texto-bl {
+    font-family: Roboto, sans-serif !important;
+    color: #121212;
+}
+
 .form-control {
     background-color: #121212 !important; 
     border-color: #121212 !important;
 }
 
+body {
+    background-color: transparent;
+    background-image: url('assets/ripples-of-sand-in-black-and-white.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
 main {
-    background-color: #121212;
+    background-color:transparent;
     min-height: 70vh;
 }
 
@@ -30,4 +44,15 @@ input[type=text]:focus, input[type=search]:focus, input[type=email]:focus, input
     border: 2px solid #8c5ce8 !important;
     box-shadow: none !important;
     outline: 0 !important;
+}
+
+.parallax {
+    background-image: url('assets/ripples-of-sand-in-black-and-white.jpg');
+
+    min-height: 500px;
+
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }

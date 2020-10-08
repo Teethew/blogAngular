@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Postagens } from '../model/Postagens'
 import { Tema } from '../model/Tema';
+import { AlertasService } from '../service/alertas.service';
 import { PostagensService } from '../service/postagens.service'
 import { TemaService } from '../service/tema.service'
 
@@ -23,7 +24,8 @@ export class FeedComponent implements OnInit {
 
   constructor(
     private postagensService: PostagensService,
-    private temaService: TemaService
+    private temaService: TemaService,
+    private alert: AlertasService
   ) { }
 
   ngOnInit(): void {
@@ -56,12 +58,12 @@ export class FeedComponent implements OnInit {
     this.postagens.tema = this.tema;
 
     if(!(this.postagens.titulo && this.postagens.tema && this.postagens.texto))
-      alert("Você precisa preencher todos os campos para poder postar... 😒");
+      this.alert.showAlertWarning("Você precisa preencher todos os campos para poder postar... 😒");
     else
       this.postagensService.postPostagens(this.postagens).subscribe((resp: Postagens) => {
         this.postagens = resp;
         this.postagens = new Postagens();
-        alert("Seu post foi publicado com sucesso! 👏");
+        this.alert.showAlertSuccess("Seu post foi publicado com sucesso! 👏");
         this.findAllPostagens();
       }) 
   }

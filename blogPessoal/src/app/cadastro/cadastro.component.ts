@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '../model/User';
+import { AlertasService } from '../service/alertas.service';
 import { AuthService } from '../service/auth.service'
 
 @Component({
@@ -15,7 +16,8 @@ export class CadastroComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private alert: AlertasService
   ) { }
 
   ngOnInit(): void {
@@ -27,10 +29,10 @@ export class CadastroComponent implements OnInit {
       {
         this.user = resp;
         this.router.navigate(['/login']);
-        alert('Usuário cadastrado com sucesso 🔝');
+        this.alert.showAlertSuccess('Usuário cadastrado com sucesso 🔝');
       });
     } else {
-      alert('As senhas não conferem 😔');
+      this.alert.showAlertWarning('As senhas não conferem 😔');
     }
   }
 

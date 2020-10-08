@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Postagens } from '../model/Postagens';
 import { Tema } from '../model/Tema';
+import { AlertasService } from '../service/alertas.service';
 import { TemaService } from '../service/tema.service';
 
 @Component({
@@ -16,7 +17,8 @@ export class PostTemaComponent implements OnInit {
   
   constructor(
     private temaService: TemaService,
-    private router: Router
+    private router: Router,
+    private alert: AlertasService
   ) { }
 
   ngOnInit(): void {
@@ -36,13 +38,15 @@ export class PostTemaComponent implements OnInit {
   }
 
   cadastrar() {
-    if(!this.tema.descricao)
-      alert('Você precisa dizer o nome do tema, oras 🤨');
+    if(this.tema.descricao.match(/^(\s)+$/)) //essa regExp testa se o texto está vazio (ou somente com espaços)
+      this.alert.showAlertWarning('Você precisa dizer o nome do tema, oras 🤨');
     else
       this.temaService.postTema(this.tema).subscribe((resp: Tema) => {
         this.tema = resp;
-        this.router.navigate(['/feed']);
-        alert('Seu tema foi cadastrado com sucesso 🤝');
+        //this.router.navigate(['/feed']);
+        this.alert.showAlertSuccess('Seu tema foi cadastrado com sucesso 🤝');
+        this.findAllTema();
+        this.tema.descricao = "";
       })
   }
 

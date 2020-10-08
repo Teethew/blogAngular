@@ -10,9 +10,9 @@ import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
 })
 export class FooterComponent implements OnInit {
 
-  faFacebook = faFacebook
-  faGithub = faGithub
-  faLinkedin = faLinkedin
+  faFacebook = faFacebook;
+  faGithub = faGithub;
+  faLinkedin = faLinkedin;
 
   constructor() { }
 

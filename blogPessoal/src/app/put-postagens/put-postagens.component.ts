@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Postagens } from '../model/Postagens';
 import { Tema } from '../model/Tema';
+import { AlertasService } from '../service/alertas.service';
 import { PostagensService } from '../service/postagens.service';
 import { TemaService } from '../service/tema.service';
 
@@ -24,7 +25,8 @@ export class PutPostagensComponent implements OnInit {
     private postagensService: PostagensService,
     private temaService: TemaService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alert: AlertasService
   ) { }
 
   ngOnInit(): void {
@@ -42,13 +44,18 @@ export class PutPostagensComponent implements OnInit {
     this.postagensService.putPostagens(this.postagens).subscribe(
       (resp: Postagens) => {
         this.postagens = resp;
-        alert("Seu post foi editado com sucesso! 👌");
+        this.alert.showAlertSuccess("Seu post foi editado com sucesso! 👌");
         this.router.navigate(['/feed']);
       }, err => {
         if(err.status == '500')
-          alert("✋ Você precisa preencher todos os campos corretamente antes de tentar salvar.");
+          this.alert.showAlertDanger("✋ Você precisa preencher todos os campos corretamente antes de tentar salvar.");
       }
     );
+  }
+
+  btnNao(){
+    this.alert.showAlertInfo("🏃‍♂️ Voltando para o feed...");
+    this.router.navigate(['/feed']);
   }
 
   findByIdPostagens(id: number) {

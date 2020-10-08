@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Postagens } from '../model/Postagens';
 import { Tema } from '../model/Tema';
+import { AlertasService } from '../service/alertas.service';
 import { TemaService } from '../service/tema.service';
 
 @Component({
@@ -23,7 +24,8 @@ export class DeleteTemaComponent implements OnInit {
     //private postagensService: PostagensService,
     private temaService: TemaService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private alert: AlertasService
   ) { }
 
   ngOnInit(): void {
@@ -35,13 +37,13 @@ export class DeleteTemaComponent implements OnInit {
 
   btnSim(){
     this.temaService.deleteByIdTema(this.tema.id).subscribe( () => {
-      alert("Seu tema foi por água abaixo 🚽");
+      this.alert.showAlertSuccess("Seu tema foi por água abaixo 🚽");
       this.router.navigate(['/cadastro-tema']);
     });
   }
 
   btnNao(){
-    alert("🚙 De volta aos temas...");
+    this.alert.showAlertInfo("🚙 De volta aos temas...");
     this.router.navigate(['/cadastro-tema']);
   }
 
