@@ -1,0 +1,5 @@
+.table {
+    background-color: azure !important; 
+    border-radius: 5px; border: none !important; 
+    border-collapse: unset;
+}

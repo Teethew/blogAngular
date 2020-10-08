@@ -15,6 +15,10 @@ import { CadastroComponent } from './cadastro/cadastro.component';
 import { FormsModule } from '@angular/forms';
 import { OrderModule } from 'ngx-order-pipe';
 import { PostTemaComponent } from './post-tema/post-tema.component';
+import { PutPostagensComponent } from './put-postagens/put-postagens.component';
+import { PutTemaComponent } from './put-tema/put-tema.component';
+import { DeletePostagensComponent } from './delete-postagens/delete-postagens.component';
+import { DeleteTemaComponent } from './delete-tema/delete-tema.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +30,11 @@ import { PostTemaComponent } from './post-tema/post-tema.component';
     PerfilLateralComponent,
     LoginComponent,
     CadastroComponent,
-    PostTemaComponent
+    PostTemaComponent,
+    PutPostagensComponent,
+    PutTemaComponent,
+    DeletePostagensComponent,
+    DeleteTemaComponent
   ],
   imports: [
     BrowserModule,

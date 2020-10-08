@@ -71,20 +71,22 @@
                 <div class="card my-5" *ngFor="let item of listaPostagens | orderBy : key : reverse">
                   <div class="card-header">
                     <div class="row d-flex">
-                      <div class="col-md-8">
+                      <div class="col-md-8 mb-2">
                         <h5 class="card-title">{{item.titulo}}</h5>
                         <small>Tema: {{item.tema.descricao}}</small>
                       </div>
                       <div class="col-md-4">
-                        <button class="mr-3 btn btn-outline-info">Editar</button>
-                        <button class="ml-3 btn btn-outline-danger">Apagar</button>
+                        <button class="mr-1 btn btn-outline-info"
+                        [routerLink]="['/editar-postagens', item.id]">Editar</button>
+                        <button class="ml-1 btn btn-outline-danger"
+                        [routerLink]="['/apagar-postagens', item.id]">Apagar</button>
                       </div>
                     </div>
                   </div>
                   <div class="card-body">
                     <p class="card-text" aria-describedby="texto"> {{item.texto}} </p>
                     <small id="texto" class="form-text m-0 text-muted mb-3 text-monospace">
-                      Postado em {{item.data | date:"dd/MM/yyyy"}}
+                      Postado em {{item.data | date:"dd/MM/yyyy"}} às {{item.data | date:"HH:mm"}}
                     </small>
                   </div>
                 </div>

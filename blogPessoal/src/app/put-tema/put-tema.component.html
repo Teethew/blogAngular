@@ -1,0 +1,26 @@
+<main class="pb-5">
+    <div class="container main py-5 rounded-lg" style="background-color: #202024;">
+
+        <div class="row">
+
+            <div class="col-md-4">
+                <app-perfil-lateral></app-perfil-lateral>
+            </div>
+
+            <div class="col-md-8 pt-4">
+
+                <h3 class="text-center mb-4 texto">Fique à vontade pra editar seu tema 📝</h3>
+
+                <div class="form-group">
+                    <label class="texto" for="titulo">Novo nome para o tema:</label>
+                    <input type="text" class="form-control" id="titulo"
+                        placeholder="Digite aqui um novo nome para o tema" [(ngModel)]='tema.descricao'>
+                </div>
+
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-success w-25 texto" (click)='salvar()'>Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

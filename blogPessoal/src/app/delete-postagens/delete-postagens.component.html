@@ -1,0 +1,37 @@
+<main class="pb-5">
+    <div class="container main py-5 rounded-lg" style="background-color: #202024;">
+
+        <div class="row">
+
+            <div class="col-md-4">
+                <app-perfil-lateral></app-perfil-lateral>
+            </div>
+            <div class="col-md-8">
+                <div class="card my-5">
+                    <div class="card-header">
+                        <div class="row d-flex">
+                            <div class="col-md-8">
+                                <h5 class="card-title">{{postagens.titulo}}</h5>
+                                <small>Tema: {{postagens.tema.descricao}}</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text" aria-describedby="texto"> {{postagens.texto}} </p>
+                        <small id="texto" class="form-text m-0 text-muted mb-3 text-monospace">
+                            Postado em {{postagens.data | date:"dd/MM/yyyy"}} às {{postagens.data | date:"HH:mm"}}
+                        </small>
+                    </div>
+                </div>
+
+                <hr class="my-5">
+
+                <h5 class="text-center text-light">Tem certeza que deseja apagar essa postagem? 😥</h5>
+                <div class="d-flex justify-content-center mt-5">
+                    <button type="button" class="btn btn-success mx-3" (click)="btnSim()">Tenho sim</button>
+                    <button type="button" class="btn btn-danger mx-3" (click)="btnNao()">Na verdade não</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
