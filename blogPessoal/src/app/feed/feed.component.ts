@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment.prod';
 import { Postagens } from '../model/Postagens'
 import { Tema } from '../model/Tema';
 import { AlertasService } from '../service/alertas.service';
@@ -17,19 +19,29 @@ export class FeedComponent implements OnInit {
 
   postagens: Postagens = new Postagens();
   listaPostagens: Postagens[];
+  titulo: string;
 
   tema: Tema = new Tema();
   listaTema: Tema[];
   idTema: number;
+  nomeTema: string;
 
   constructor(
     private postagensService: PostagensService,
     private temaService: TemaService,
-    private alert: AlertasService
+    private alert: AlertasService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     window.scroll(0, 0);
+
+    let token = environment.token;
+
+    if(!token) {
+      this.router.navigate(['/login']);
+      this.alert.showAlertDanger("Você precisa estar logado para visualizar o feed. 🕵️‍♂️");
+    }
 
     this.findAllPostagens();
     this.findAllTema();
@@ -39,6 +51,15 @@ export class FeedComponent implements OnInit {
     this.postagensService.getAllPostagens().subscribe((resp: Postagens[]) => {
       this.listaPostagens = resp; 
     });
+  }
+
+  findByTituloPostagens() {
+    if(this.titulo.match(/^(\s)+$/) || this.titulo.length == 0)
+      this.findAllPostagens();
+    else
+      this.postagensService.getByTituloPostagens(this.titulo).subscribe((resp: Postagens[]) => {
+        this.listaPostagens = resp;
+      });
   }
 
   findAllTema() {
@@ -51,6 +72,16 @@ export class FeedComponent implements OnInit {
     this.temaService.getByIdTema(this.idTema).subscribe((resp: Tema) => {
       this.tema = resp;
     });
+  }
+
+  findByDescricaoTema() {
+    //o match está usando uma expressão regular que verifica se não há somente espaços no campo
+    if (this.nomeTema.match(/^(\s)+$/) || this.nomeTema.length == 0)
+      this.findAllTema();
+    else
+      this.temaService.getByDescricaoTema(this.nomeTema).subscribe((resp: Tema[]) => {
+        this.listaTema = resp;
+      });
   }
 
   publicar() {

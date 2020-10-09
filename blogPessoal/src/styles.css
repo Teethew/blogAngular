@@ -19,7 +19,7 @@
 
 body {
     background-color: transparent;
-    background-image: url('assets/ripples-of-sand-in-black-and-white.jpg');
+    background-image: url('assets/ripples-of-sand-in-black-and-white.jpg'); /*Créditos a Adrien Olichon pela imagem*/
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -29,6 +29,7 @@ body {
 main {
     background-color:transparent;
     min-height: 70vh;
+    overflow-x: hidden;
 }
 
 aside {
@@ -56,3 +57,5 @@ input[type=text]:focus, input[type=search]:focus, input[type=email]:focus, input
     background-repeat: no-repeat;
     background-size: cover;
 }
+
+

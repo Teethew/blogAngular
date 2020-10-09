@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Postagens } from '../model/Postagens';
+//import { Router } from '@angular/router';
+//import { Postagens } from '../model/Postagens';
 import { Tema } from '../model/Tema';
 import { AlertasService } from '../service/alertas.service';
 import { TemaService } from '../service/tema.service';
@@ -17,7 +17,7 @@ export class PostTemaComponent implements OnInit {
   
   constructor(
     private temaService: TemaService,
-    private router: Router,
+    //private router: Router,
     private alert: AlertasService
   ) { }
 

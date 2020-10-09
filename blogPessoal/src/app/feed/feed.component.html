@@ -13,21 +13,22 @@
 
         <div class="form-group">
           <label class="texto" for="titulo">Título:</label>
-          <input type="text" class="form-control" id="titulo" 
-          placeholder="Digite aqui o seu titulo" [(ngModel)]='postagens.titulo'>
+          <input type="text" class="form-control" id="titulo" placeholder="Digite aqui o seu titulo"
+            [(ngModel)]='postagens.titulo'>
         </div>
 
         <div class="form-group">
           <label class="texto" for="texto">Texto:</label>
-          <textarea class="form-control" id="texto" rows="3" 
-          placeholder="Digite aqui o seu texto" [(ngModel)]='postagens.texto'></textarea>
+          <textarea class="form-control" id="texto" rows="10" placeholder="Digite aqui o seu texto"
+            [(ngModel)]='postagens.texto' style="resize: none;"></textarea>
         </div>
 
         <div class="row d-flex align-items-end">
 
           <div class="col-md-6">
             <div class="form-group m-0">
-              <label class="texto" for="tema">Escolha um tema ou <a routerLink='/cadastro-tema'>Cadastre um novo</a></label>
+              <label class="texto" for="tema">Escolha um tema ou <a routerLink='/cadastro-tema'>Cadastre um
+                  novo</a></label>
               <select name="tema" id='tema' class="form-control" [(ngModel)]='idTema' (change)='findByIdTema()'>
                 <option *ngFor='let item of listaTema' value={{item.id}}>
                   {{item.descricao}}
@@ -60,10 +61,12 @@
             aria-labelledby="nav-postagens-tab">
             <div class="row mt-3 mb-3">
               <div class="col-md-10 pr-0">
-                <input class="form-control w-100" type="search" placeholder="Pesquisar postagem" aria-label="Pesquisar">
+                <input class="form-control w-100" type="search" placeholder="Pesquisar postagem" aria-label="Pesquisar"
+                  [(ngModel)]="titulo">
               </div>
               <div class="col-md-2 pl-0">
-                <button class="btn btn-outline-light w-100" type="button">Pesquisar</button>
+                <button class="btn btn-outline-light w-100" type="button"
+                  (click)="findByTituloPostagens()">Pesquisar</button>
               </div>
             </div>
             <div class="row">
@@ -77,9 +80,9 @@
                       </div>
                       <div class="col-md-4">
                         <button class="mr-1 btn btn-outline-info"
-                        [routerLink]="['/editar-postagens', item.id]">Editar</button>
+                          [routerLink]="['/editar-postagens', item.id]">Editar</button>
                         <button class="ml-1 btn btn-outline-danger"
-                        [routerLink]="['/apagar-postagens', item.id]">Apagar</button>
+                          [routerLink]="['/apagar-postagens', item.id]">Apagar</button>
                       </div>
                     </div>
                   </div>
@@ -97,10 +100,39 @@
           <div class="tab-pane fade" id="postagens-temas" role="tabpanel" aria-labelledby="nav-presenca-tab">
             <div class="row mt-3 mb-3">
               <div class="col-md-10 pr-0">
-                <input class="form-control w-100" type="search" placeholder="Pesquisar postagem" aria-label="Pesquisar">
+                <input class="form-control w-100" type="search" placeholder="Pesquisar postagem" aria-label="Pesquisar"
+                  [(ngModel)]="nomeTema">
               </div>
               <div class="col-md-2 pl-0">
-                <button class="btn btn-outline-light w-100" type="button">Pesquisar</button>
+                <button class="btn btn-outline-light w-100" type="button"
+                  (click)="findByDescricaoTema()">Pesquisar</button>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12" *ngFor="let tema of listaTema | orderBy : key : reverse">
+                <div class="card my-5" *ngFor="let post of tema.postagens">
+                  <div >
+                    <div class="card-header">
+                      <div class="row d-flex">
+                        <div class="col-md-8 mb-2">
+                          <h5 class="card-title  texto-bl">{{post.titulo}}</h5>
+                        </div>
+                        <div class="col-md-4">
+                          <button class="mr-1 btn btn-outline-info"
+                            [routerLink]="['/editar-postagens', post.id]">Editar</button>
+                          <button class="ml-1 btn btn-outline-danger"
+                            [routerLink]="['/apagar-postagens', post.id]">Apagar</button>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="card-body">
+                      <p class="card-text" aria-describedby="texto"> {{post.texto}} </p>
+                      <small id="texto" class="form-text m-0 text-muted mb-3">
+                        Postado em {{post.data | date:"dd/MM/yyyy"}} às {{post.data | date:"HH:mm"}}
+                      </small>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
