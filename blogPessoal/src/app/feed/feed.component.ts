@@ -91,12 +91,17 @@ export class FeedComponent implements OnInit {
     if(!(this.postagens.titulo && this.postagens.tema && this.postagens.texto))
       this.alert.showAlertWarning("Você precisa preencher todos os campos para poder postar... 😒");
     else
-      this.postagensService.postPostagens(this.postagens).subscribe((resp: Postagens) => {
-        this.postagens = resp;
-        this.postagens = new Postagens();
-        this.alert.showAlertSuccess("Seu post foi publicado com sucesso! 👏");
-        this.findAllPostagens();
-      }) 
+      this.postagensService.postPostagens(this.postagens).subscribe(
+        (resp: Postagens) => {
+          this.postagens = resp;
+          this.postagens = new Postagens();
+          this.alert.showAlertSuccess("Seu post foi publicado com sucesso! 👏");
+        }, err => {
+          if(err.status == '500')
+            this.alert.showAlertWarning("Escreve mais um pouquinho aí por favor. 🥺");
+        }
+      );
+    this.findAllPostagens(); 
   }
 
 }

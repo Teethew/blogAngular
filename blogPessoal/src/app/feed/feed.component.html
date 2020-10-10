@@ -110,29 +110,30 @@
             </div>
             <div class="row">
               <div class="col-md-12" *ngFor="let tema of listaTema | orderBy : key : reverse">
-                <div class="card my-5" *ngFor="let post of tema.postagens">
-                  <div >
-                    <div class="card-header">
-                      <div class="row d-flex">
-                        <div class="col-md-8 mb-2">
-                          <h5 class="card-title  texto-bl">{{post.titulo}}</h5>
-                        </div>
-                        <div class="col-md-4">
-                          <button class="mr-1 btn btn-outline-info"
-                            [routerLink]="['/editar-postagens', post.id]">Editar</button>
-                          <button class="ml-1 btn btn-outline-danger"
-                            [routerLink]="['/apagar-postagens', post.id]">Apagar</button>
+                <h3 class="text-light">{{tema.descricao}}</h3>
+                  <div class="card my-5" *ngFor="let post of tema.postagens">
+                    <div >
+                      <div class="card-header">
+                        <div class="row d-flex">
+                          <div class="col-md-8 mb-2">
+                            <h5 class="card-title  texto-bl">{{post.titulo}}</h5>
+                          </div>
+                          <div class="col-md-4">
+                            <button class="mr-1 btn btn-outline-info"
+                              [routerLink]="['/editar-postagens', post.id]">Editar</button>
+                            <button class="ml-1 btn btn-outline-danger"
+                              [routerLink]="['/apagar-postagens', post.id]">Apagar</button>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div class="card-body">
-                      <p class="card-text" aria-describedby="texto"> {{post.texto}} </p>
-                      <small id="texto" class="form-text m-0 text-muted mb-3">
-                        Postado em {{post.data | date:"dd/MM/yyyy"}} às {{post.data | date:"HH:mm"}}
-                      </small>
+                      <div class="card-body">
+                        <p class="card-text" aria-describedby="texto"> {{post.texto}} </p>
+                        <small id="texto" class="form-text m-0 text-muted mb-3">
+                          Postado em {{post.data | date:"dd/MM/yyyy"}} às {{post.data | date:"HH:mm"}}
+                        </small>
+                      </div>
                     </div>
                   </div>
-                </div>
               </div>
             </div>
           </div>

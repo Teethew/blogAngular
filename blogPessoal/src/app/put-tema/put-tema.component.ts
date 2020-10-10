@@ -29,7 +29,7 @@ export class PutTemaComponent implements OnInit {
   }
 
   salvar() {
-    if(!this.tema.descricao.match(/^(\s)+$/))
+    if(!this.tema.descricao.match(/^(\s)+$/) && this.tema.descricao.length != 0)
       this.temaService.putTema(this.tema).subscribe(
         (resp: Tema) => {
           this.tema = resp;

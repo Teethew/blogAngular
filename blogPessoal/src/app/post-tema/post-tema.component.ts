@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-//import { Router } from '@angular/router';
+import { Router } from '@angular/router';
 //import { Postagens } from '../model/Postagens';
 import { Tema } from '../model/Tema';
 import { AlertasService } from '../service/alertas.service';
@@ -17,7 +17,7 @@ export class PostTemaComponent implements OnInit {
   
   constructor(
     private temaService: TemaService,
-    //private router: Router,
+    private router: Router,
     private alert: AlertasService
   ) { }
 
@@ -38,16 +38,21 @@ export class PostTemaComponent implements OnInit {
   }
 
   cadastrar() {
-    if(this.tema.descricao.match(/^(\s)+$/)) //essa regExp testa se o texto está vazio (ou somente com espaços)
-      this.alert.showAlertWarning('Você precisa dizer o nome do tema, oras 🤨');
+    if(this.tema.descricao.match(/^(\s)+$/) || this.tema.descricao.length == 0) //essa regExp testa se o texto está vazio (ou somente com espaços)
+      this.alert.showAlertWarning('Você precisa dizer o nome do tema, oras 🤨'); 
     else
-      this.temaService.postTema(this.tema).subscribe((resp: Tema) => {
-        this.tema = resp;
-        //this.router.navigate(['/feed']);
-        this.alert.showAlertSuccess('Seu tema foi cadastrado com sucesso 🤝');
-        this.findAllTema();
-        this.tema.descricao = "";
-      })
+      this.temaService.postTema(this.tema).subscribe(
+        (resp: Tema) => {
+          this.tema = resp;
+          this.tema = new Tema();
+          //this.router.navigate(['/feed']);
+          this.alert.showAlertSuccess('Seu tema foi cadastrado com sucesso 🤝');
+          this.findAllTema();
+        }, err => {
+          if(err.status == '500')
+            this.alert.showAlertWarning("Esse nome tá muito pequeno. 🤏");
+        })
+    
   }
 
 }

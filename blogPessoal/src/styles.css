@@ -1,6 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
 
+html {
+    width: 100%;
+}
+
 .texto {
     font-family: Roboto, sans-serif !important;
     color: #e2e2e5;
@@ -23,7 +27,37 @@ body {
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
-    background-size: cover;
+    --background-size: cover;
+    background-size: 200% 300%;
+    position: relative;
+    animation: change 10s ease-in-out infinite;
+}
+
+.parallax {
+    --background-image: url('assets/ripples-of-sand-in-black-and-white.jpg');
+
+    min-height: 500px;
+
+    background-attachment: fixed;
+
+    /*background-position: center;
+    background-repeat: no-repeat;
+    --background-size: cover;
+    background-size: 200% 200%;
+    position: relative;
+    animation: change 10s ease-in-out infinite;*/
+}
+
+@keyframes change {
+    0% {
+        background-position: 0 25%;
+    }
+    50% {
+        background-position: 100% 25%;
+    }
+    100% {
+        background-position: 0 25%;
+    }
 }
 
 main {
@@ -47,15 +81,6 @@ input[type=text]:focus, input[type=search]:focus, input[type=email]:focus, input
     outline: 0 !important;
 }
 
-.parallax {
-    background-image: url('assets/ripples-of-sand-in-black-and-white.jpg');
 
-    min-height: 500px;
-
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
 
 
